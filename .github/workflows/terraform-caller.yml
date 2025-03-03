@@ -28,4 +28,4 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false
+      run: echo "AWS credentials are needed to run terraform plan -input=false"
