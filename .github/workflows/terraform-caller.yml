@@ -5,10 +5,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  CallerMatrix:
-    strategy:
-      matrix:
-        env-type: [dev, pre, pro]
-    uses: saguit03/terraform-gitflow/.github/workflows/terraform-called.yml@actions
-    with:
-      env-type: ${{ matrix.env-type }}
+  prueba:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: 'dev'
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v4
