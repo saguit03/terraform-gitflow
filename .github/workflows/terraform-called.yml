@@ -85,9 +85,8 @@ jobs:
   block-merge-if-fail:
       needs: rollback
       runs-on: ubuntu-latest
-      if:
       steps:
         - name: Bloquear Merge
           run: |
-            echo "❌ Error en Terraform, se ha vuelto atrás. PR bloqueado."
+            echo "❌ Error en Terraform, se ha vuelto atrás. PR bloqueada."
             exit 1
