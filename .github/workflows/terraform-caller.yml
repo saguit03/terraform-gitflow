@@ -1,12 +1,24 @@
+name: 'Terraform'
 on:
   push:
+    branches: 
+      - feature/*
+  pull_request: 
+    branches: 
+      - release/*
+      - main
+      - master
   workflow_dispatch:
+    inputs:
+      env-type:
+        required: true
+        type: string
 
 jobs:
   CallerMatrix:
     strategy:
       matrix:
         env-type: [dev, pre, pro]
-    uses: saguit03/terraform-gitflow/.github/workflows/terraform-called.yml@actions
+    uses: ./.github/workflows/terraform-called.yml
     with:
       env-type: ${{ matrix.env-type }}
