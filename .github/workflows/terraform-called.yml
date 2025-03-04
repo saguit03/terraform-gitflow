@@ -82,3 +82,13 @@ jobs:
           git checkout actions
           git reset --hard HEAD~1
           git push --force origin actions 
+  block-merge-if-fail:
+      needs: rollback
+      runs-on: ubuntu-latest
+      if:
+      steps:
+        - name: Bloquear Merge
+          run: |
+            echo "❌ Error en Terraform, se ha vuelto atrás. PR bloqueado."
+            exit 1
+            

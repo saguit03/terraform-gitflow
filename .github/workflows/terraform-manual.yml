@@ -1,0 +1,19 @@
+name: 'Manual Terraform Execution'
+
+on:
+  workflow_dispatch:
+    inputs:
+      env-type:
+        description: 'Environment type'
+        required: true
+        type: choice
+        options:
+          - dev
+          - pre
+          - pro
+
+jobs:
+  manual-terraform:
+    uses: ./.github/workflows/terraform-called.yml
+    with:
+      env-type: ${{ inputs.env-type }}

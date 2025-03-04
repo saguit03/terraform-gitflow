@@ -1,18 +1,14 @@
 name: 'Terraform'
+
 on:
   push:
     branches: 
-      - feature/*
+      - 'feature/*'
   pull_request: 
     branches: 
-      - release/*
-      - main
-      - master
-  workflow_dispatch:
-    inputs:
-      env-type:
-        required: true
-        type: string
+      - 'release/*'
+      - 'main'
+      - 'master'
 
 jobs:
   CallerMatrix:
