@@ -78,10 +78,10 @@ jobs:
 
       - name: Revertir el último commit fallido
         run: |
-          git fetch origin actions
-          git checkout actions
+          git fetch origin ${GITHUB_REF#refs/heads/}
+          git checkout ${GITHUB_REF#refs/heads/}
           git reset --hard HEAD~1
-          git push --force origin actions 
+          git push --force origin ${GITHUB_REF#refs/heads/} 
   block-merge-if-fail:
       needs: rollback
       runs-on: ubuntu-latest
@@ -91,4 +91,3 @@ jobs:
           run: |
             echo "❌ Error en Terraform, se ha vuelto atrás. PR bloqueado."
             exit 1
-            
